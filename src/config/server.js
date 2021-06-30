@@ -16,7 +16,7 @@ app.use(express.json());
 
 dotenv.config({path: path.join(__dirname, '../env/.env')});
 
-app.use('/resources', express.static(path.join(__dirname, '..public')));
+app.use('/resources', express.static(path.join(__dirname, '../public')));
 app.use(session({
     secret: 'secret',
     resave: true,
