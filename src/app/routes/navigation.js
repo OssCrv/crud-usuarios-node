@@ -4,9 +4,12 @@ const bcryptjs = require("bcryptjs");
 module.exports = app => {    
     app.get('/', (req, res) => {
         if (req.session.isLoggedIn){
-            res.render("../views/pages/users", {
-                login: true
-            });
+            connection.query("SELECT * FROM users WHERE rol != 'admin'", (err,results) => {
+                res.render("../views/pages/users", {
+                    login: true,
+                    userList: results
+                });
+            })
         } else {
             res.redirect("/login");
         }
