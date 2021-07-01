@@ -2,8 +2,11 @@
 
 
 <nav class="navbar navbar-dark bg-dark">
-    <a href="#" class="navbar-brand mx-auto">Usuarios</a>
+    <a href="/" class="navbar-brand mx-auto">Usuarios</a>
 
-    <% if (typeof login != "undefined") { %> <a href="/logout" class="navbar-brand mx-auto">Log Out</a> <% } %>
+    <% if (typeof login != "undefined") { %> 
+        <a href="/active" class="navbar-brand mx-auto">Usuarios Activos</a>
+        <a href="/logout" class="navbar-brand mx-auto">Log Out</a> 
+    <% } %>
 
 </nav>
