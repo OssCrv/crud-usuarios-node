@@ -3,14 +3,26 @@ const bcryptjs = require("bcryptjs");
 
 module.exports = app => {    
     app.get('/', (req, res) => {
-        res.render("../views/pages/users");
+        if (req.session.isLoggedIn){
+            res.render("../views/pages/users", {
+                login: true
+            });
+        } else {
+            res.redirect("/login");
+        }
+        
     })
 
 
     app.get('/login', (req, res) => {
         res.render("../views/pages/login");
     })
-
+    
+    app.get('/logout', (req,res) =>{
+        req.session.destroy(() => {
+            res.redirect('/');
+        })
+    })
     //Metodos post
     app.post("/auth", (req, res) => {
         const {username, pass} = req.body;
@@ -23,7 +35,9 @@ module.exports = app => {
                     if(result.length === 0 || !(await bcryptjs.compare(pass, result[0].pass))){
                         res.send("Usuario y/o password incorrectos")
                     } else {
-                        res.send("Si esta en la BD")
+                        req.session.isLoggedIn = true;
+                        req.session.rol = result[0].rol;
+                        res.redirect('/');
                     }
                 }
             });
