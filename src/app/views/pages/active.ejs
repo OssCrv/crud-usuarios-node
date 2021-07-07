@@ -9,13 +9,20 @@
     <%- include('../partials/header'); %>
 
     <section class="container mt-4">
+      
       <script>
         $(document).ready(function () {
-          $("#example").DataTable();
+          let dataTableLenguaje = require('../../app/utils/lenguaje');
+          let options = {
+            paging: true,
+            language: dataTableLenguaje,
+          }
+          $("#table").DataTable(options);
         });
       </script>
+
       <table
-        id="example"
+        id="table"
         class="table table-striped table-bordered table-sm"
         cellspacing="0"
         width="100%"

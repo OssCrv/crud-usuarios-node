@@ -11,7 +11,12 @@
     <section class="container mt-4">
         <script>
             $(document).ready(function() {
-                $('#example').DataTable();
+              let dataTableLenguaje = require('../../app/utils/lenguaje');
+              let options = {
+                paging: true,
+                language: dataTableLenguaje,
+              }
+                $('#example').DataTable(options);
             } );
           </script>
         <table id="example" class="table table-striped table-bordered table-sm" cellspacing="0" width="100%">
@@ -53,7 +58,7 @@
                     </tr>
 
                     <!-- Ventana Modal -->
-                    <div class="modal fade" id="editModal<%= user.cedula %>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal fade" id="editModal-<%= user.cedula %>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                         <div class="modal-dialog">
                           <div class="modal-content">
                             <div class="modal-header">
@@ -64,19 +69,19 @@
                               <form action="/edit/<%= user.cedula %>" method="POST">
                                 <div class="mb-3">
                                   <label for="recipient-name" class="col-form-label">Cédula</label>
-                                  <input type="text" class="form-control" id="recipient-name" name="cedula" value="<%= user.cedula %>" disabled>
+                                  <input type="text" class="form-control" id="recipient-name-<%= user.cedula %>" name="cedula" value="<%= user.cedula %>" disabled>
                                 </div>
                                 <div class="mb-3">
                                   <label for="message-text" class="col-form-label">Nombre Completo</label>
-                                  <input class="form-control" id="message-text" name="full_name" value="<%= user.full_name %>">
+                                  <input class="form-control" id="message-text-<%= user.cedula %>" name="full_name" value="<%= user.full_name %>">
                                 </div>
                                 <div class="mb-3">
                                     <label for="message-text" class="col-form-label">Nombre de Usuario</label>
-                                    <input class="form-control" id="message-text" name="user_name" value="<%= user.user_name %>">
+                                    <input class="form-control" id="message-text1-<%= user.cedula %>" name="user_name" value="<%= user.user_name %>">
                                   </div>
                                   <div class="mb-3">
                                     <label for="message-text" class="col-form-label">Activo/a</label>
-                                    <input class="form-control" id="message-text" name="is_active" value="<%= user.is_active %>">
+                                    <input class="form-control" id="message-text2-<%= user.cedula %>" name="is_active" value="<%= user.is_active %>">
                                   </div>
                                 <div class="modal-footer">
                                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
