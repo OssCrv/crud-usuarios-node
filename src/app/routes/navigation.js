@@ -10,7 +10,12 @@ module.exports = (app) => {
       connection.query(
         "SELECT * FROM users WHERE rol != 'admin'",
         (err, results) => {
-          results.map( (result) => dateTransformer.resultToTable(result) )
+          
+          results.map( (result) => {
+            dateTransformer.resultToTable(result);
+            result.is_active == 1 ? result.is_active = "Sí" : result.is_active = "No";
+          })
+
           res.render("../views/pages/users", {
             login: true,
             userList: results,
@@ -53,6 +58,29 @@ module.exports = (app) => {
     });
   });
 
+  //Add tabla usuarios
+  app.post("/add", async(req, res) => {
+    if (req.session.isLoggedIn) {
+      const {cedula, full_name, user_name, pass} = req.body;
+      const hash = await bcryptjs.hash(pass, 8);
+      connection.query("INSERT INTO users SET ?", {
+        cedula: cedula,
+        full_name: full_name,
+        user_name: user_name,
+        pass: hash,
+        rol: 'CLIENT',
+        is_active: 1,
+      }, (err, results) => {
+        if (err) {
+          console.log(err);
+        } else {
+          res.redirect("/");
+        }
+      })
+    } else {
+      res.redirect("/login");
+    }
+  });
   //Delete tabla usuarios
   app.get("/delete/:id", (req, res) => {
     const id = req.params.id;
