@@ -1,10 +1,10 @@
 const mysql = require('mysql');
 
 const conexion_bd = {
-        host: "us-cdbr-east-04.cleardb.com",
-        user: "b6fe1e3cf03490",
-        database: "heroku_9d383d05ea87821",
-        password: "528a8b07",
+        host: process.env.DB_HOST,
+        user: process.env.DB_USER,
+        database: process.env.DB_DATABASE,
+        password: process.env.DB_PASS
 };
 
 function handleDisconnect(conexion_bd) {
