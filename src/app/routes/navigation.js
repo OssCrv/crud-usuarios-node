@@ -29,6 +29,7 @@ module.exports = (app) => {
 
   //Ruta de usuarios activos
   app.get("/active", (req, res) => {
+    
     if (req.session.isLoggedIn) {
       connection.query(
         "SELECT * FROM users WHERE is_active != 0 AND rol = 'client'",

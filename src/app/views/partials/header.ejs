@@ -2,7 +2,7 @@
 
 <nav class="navbar navbar-dark bg-dark" >
   <div class="container" style="width: 80%;">
-    <a href="/" class="navbar-brand">Usuarios</a>
+    <a href="/" class="navbar-brand">Jairo S.A.</a>
    <!--  <a href="/active" class="navbar-brand">Usuarios Activos</a> -->
 
    
@@ -50,7 +50,22 @@
       </div>
 
 
-      <a href="/logout" class="navbar-brand">Log Out</a>
+      <a href="/logout" class="navbar-brand" data-bs-toggle="modal" data-bs-target="#exitModal">Log Out</a>
+      <div class="modal fade" id="exitModal" tabindex="-1" aria-labelledby="exitModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h4 class="modal-title m-4 text-danger" id="exampleModalLabel"><strong>¿Esta seguro que desea salir?</strong></h4>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+              <a href="/logout" type="button" class="btn btn-danger">Salir</a>
+            </div>
+          </div>
+        </div>
+      </div>
 
       
 
