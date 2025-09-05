@@ -41,8 +41,8 @@ Antes de comenzar, asegúrate de contar con:
 1. **Clona el repositorio**
 
    ```bash
-   git clone https://github.com/OssCrv/reto-programacion.git
-   cd reto-programacion
+   git clone https://github.com/OssCrv/crud-usuarios-node.git
+   cd crud-usuarios-node
 Instala dependencias
 
 bash
@@ -94,7 +94,7 @@ Tras iniciar sesión, podrás ver la lista de usuarios, crear nuevos clientes, e
 Estructura del proyecto
 text
 Copiar código
-reto-programacion/
+crud-usuarios-node/
 ├── package.json           # dependencias y scripts
 ├── src/
 │   ├── index.js           # punto de entrada, inicia el servidor y rutas
